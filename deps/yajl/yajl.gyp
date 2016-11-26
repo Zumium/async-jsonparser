@@ -1,0 +1,27 @@
+{
+  'targets':[
+    {
+      'target_name':'yajl',
+      'type':'static_library',
+      'include_dirs':[
+	'./api',
+      	'.'
+      ],
+      'direct_dependent_settings':{
+        'include_dirs':[
+	  './api'
+	]
+      },
+      'sources':[
+      	'yajl.c',
+	'yajl_alloc.c',
+	'yajl_buf.c',
+	'yajl_encode.c',
+	'yajl_gen.c',
+	'yajl_lex.c',
+	'yajl_parser.c',
+	'yajl_tree.c'
+      ]
+    }
+  ]
+}
