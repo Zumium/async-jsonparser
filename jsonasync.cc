@@ -1,19 +1,38 @@
 #include <nan.h>
-#include <node.h>
-#include "yajl_gen.h"
-#include "yajl_parse.h"
 
-void Parse(const Nan::FunctionCallbackInfo<v8:Value> &info){
-  
+NAN_METHOD(parse){
+  if(info.Length() != 2){
+    Nan::ThrowTypeError("parse function requires exactly two paramters");
+    return;
+  }
+  if(!info[0]->IsString() || !info[1]->IsFunction()){
+    Nan::ThrowTypeError("parse function requires a string to parse and a callback function to invoke");
+    return;
+  }
+
+  char* json_str=*Nan::Utf8String(info[0]);
+
 }
 
-void Stringify(const Nan::FunctionCallbackInfo<v8:Value> &info){
+/*
+temporarily disable this for conveniently testing parse
+
+NAN_METHOD(stringify){
+  if(info.Length() != 2){
+    Nan::ThrowTypeError("stringify function requires exactly two paramters");
+    return;
+  }
+  if(!info[0]->IsObject() || !info[1]->IsFunction()){
+    Nan::ThrowTypeError("stringify function requires an object and a callback function to invoke");
+    return;
+  }
 
 }
+*/
 
-void Init(v8::Local<v8::Object> exports){
-  exports->Set(Nan::New("parse").toLocalChecked(),Nan::New<v8::FunctionTemplate>(Parse)->GetFunction());
-  exports->Set(Nan::New("stringify").toLocalChecked(),Nan::New<v8::FunctionTemplate>(Stringify)->GetFunction());
+NAN_MODULE_INIT(Init){
+  NAN_EXPORT(target,parse);
+  //NAN_EXPORT(target,stringify);
 }
 
 NODE_MODULE(jsonasync,Init)
