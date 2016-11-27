@@ -29,7 +29,7 @@ void JsonParseWork::HandleOKCallback() {
   callback->Call(2,argv);
 }
 
-v8::Local<v8::Value> TreeNodeToObject(yajl_val treeNode){
+v8::Local<v8::Value> JsonParseWork::TreeNodeToObject(yajl_val treeNode){
   //This function is to convert a tree node to v8 object
     if (YAJL_IS_STRING(treeNode)) {
       //String value
