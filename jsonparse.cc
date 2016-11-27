@@ -33,17 +33,17 @@ v8::Local<v8::Value> JsonParseWork::TreeNodeToObject(yajl_val treeNode){
   //This function is to convert a tree node to v8 object
     if (YAJL_IS_STRING(treeNode)) {
       //String value
-      return Nan::New(YAJL_GET_STRING(treeNode)).ToLocalChecked().As<v8::Value>();
+      return Nan::New(YAJL_GET_STRING(treeNode)).ToLocalChecked();
     }
     else if (YAJL_IS_NUMBER(treeNode)) {
       //Number type
       if(YAJL_IS_INTEGER(treeNode))
-        return Nan::New(static_cast<double>(YAJL_GET_INTEGER(treeNode))).As<v8::Value>();
+        return Nan::New(static_cast<double>(YAJL_GET_INTEGER(treeNode)));
       else if(YAJL_IS_DOUBLE(treeNode))
-        return Nan::New(YAJL_GET_DOUBLE(treeNode)).As<v8::Value>();
+        return Nan::New(YAJL_GET_DOUBLE(treeNode));
       else
         //In this situation we need to convert string to double
-        return Nan::New(atof(YAJL_GET_NUMBER(treeNode))).As<v8::Value>();
+        return Nan::New(atof(YAJL_GET_NUMBER(treeNode)));
     }
     else if (YAJL_IS_OBJECT(treeNode)) {
       //Object type
@@ -54,9 +54,9 @@ v8::Local<v8::Value> JsonParseWork::TreeNodeToObject(yajl_val treeNode){
       yajl_val* values=YAJL_GET_OBJECT(treeNode)->values;
       //iterating through and convert
       for(unsigned long i=0;i<YAJL_GET_OBJECT(treeNode)->len;i++)
-        Nan::Set(newObj,Nan::New(keys[i]).ToLocalChecked().As<v8::Value>(),TreeNodeToObject(values[i]));
+        Nan::Set(newObj,Nan::New(keys[i]).ToLocalChecked(),TreeNodeToObject(values[i]));
       //return the object
-      return newObj.As<v8::Value>();
+      return newObj;
     }
     else if (YAJL_IS_ARRAY(treeNode)) {
       //Array type
@@ -68,21 +68,21 @@ v8::Local<v8::Value> JsonParseWork::TreeNodeToObject(yajl_val treeNode){
       for(unsigned long i=0;i<YAJL_GET_ARRAY(treeNode)->len;i++)
         Nan::Set(newArray,i,TreeNodeToObject(values[i]));
       //return the array
-      return newArray.As<v8::Value>();
+      return newArray;
     }
     else if (YAJL_IS_TRUE(treeNode)) {
       //Boolean type -- true
-      return Nan::True().As<v8::Value>();
+      return Nan::True();
     }
     else if (YAJL_IS_FALSE(treeNode)) {
       //Boolean type -- false
-      return Nan::False().As<v8::Value>();
+      return Nan::False();
     }
     else if (YAJL_IS_NULL(treeNode)) {
       //Null type
-      return Nan::Null().As<v8::Value>();
+      return Nan::Null();
     }
   //the default return value is a NULL
   //This shouldn't happen in normal condition
-  return Nan::Null().As<v8::Value>();
+  return Nan::Null();
 }
