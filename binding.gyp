@@ -7,6 +7,6 @@
         'dependencies':[
             'deps/yajl/yajl.gyp:yajl'
         ],
-        'sources':['jsonasync.cc']
+        'sources':['jsonasync.cc','jsonparse.cc']
     ]
 }
