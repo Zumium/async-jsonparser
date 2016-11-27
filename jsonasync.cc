@@ -1,4 +1,5 @@
 #include <nan.h>
+#include "jsonparse.hpp"
 
 NAN_METHOD(parse){
   if(info.Length() != 2){
@@ -11,7 +12,8 @@ NAN_METHOD(parse){
   }
 
   char* json_str=*Nan::Utf8String(info[0]);
-
+  Nan::Callback* callback=new Nan::Callback(info[1].As<v8::Function>());
+  Nan::AsyncQueueWorker(new JsonParseWork(callback,json_str));
 }
 
 /*

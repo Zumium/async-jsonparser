@@ -9,13 +9,13 @@ private:
   char* jsonStr;
   yajl_val jsonTree;
 
-  v8::Local<v8:Value> TreeNodeToObject(yajl_val treeNode);
+  v8::Local<v8::Value> TreeNodeToObject(yajl_val treeNode);
 public:
-  JsonParseWork(Callback* cb,char* json);
+  JsonParseWork(Nan::Callback* cb,char* json);
   ~JsonParseWork();
   void Execute();
 protected:
   void HandleOKCallback();
 };
 
-#endif __JSONPARSE_H
+#endif
