@@ -1,14 +1,14 @@
 {
     'targets':[
         {
-            'target_name':'jsonasync',
+            'target_name':'async-jsonparser',
             'include_dirs':[
                 "<!(node -e \"require('nan')\")"
             ],
             'dependencies':[
                 'deps/yajl/yajl.gyp:yajl'
             ],
-            'sources':['jsonasync.cc','jsonparse.cc']
+            'sources':['main.cc','jsonparse.cc']
         }
     ]
 }

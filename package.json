@@ -1,9 +1,9 @@
 {
-  "name": "jsonasync",
+  "name": "async-jsonparser",
   "version": "0.0.1",
-  "description": "Asynchronous and libuv-based json parser and stringifier  ",
+  "description": "Asynchronous libuv-based json parser",
   "main": "index.js",
-  "repository": "git@github.com:Zumium/jsonasync.git",
+  "repository": "git@github.com:Zumium/async-jsonparser.git",
   "author": "Zumium <martin007323@gmail.com>",
   "license": "MIT",
   "dependencies": {

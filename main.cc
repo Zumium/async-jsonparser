@@ -16,25 +16,8 @@ NAN_METHOD(parse){
   Nan::AsyncQueueWorker(new JsonParseWork(callback,json_str));
 }
 
-/*
-temporarily disable this for conveniently testing parse
-
-NAN_METHOD(stringify){
-  if(info.Length() != 2){
-    Nan::ThrowTypeError("stringify function requires exactly two paramters");
-    return;
-  }
-  if(!info[0]->IsObject() || !info[1]->IsFunction()){
-    Nan::ThrowTypeError("stringify function requires an object and a callback function to invoke");
-    return;
-  }
-
-}
-*/
-
 NAN_MODULE_INIT(Init){
   NAN_EXPORT(target,parse);
-  //NAN_EXPORT(target,stringify);
 }
 
-NODE_MODULE(jsonasync,Init)
+NODE_MODULE(async-jsonparser,Init)
