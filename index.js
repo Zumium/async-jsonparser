@@ -1,1 +1,1 @@
-module.exports=require('bindings')('jsonasync');
+module.exports=require('bindings')('asyncparser');

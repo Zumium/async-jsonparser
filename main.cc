@@ -20,4 +20,4 @@ NAN_MODULE_INIT(Init){
   NAN_EXPORT(target,parse);
 }
 
-NODE_MODULE(async-jsonparser,Init)
+NODE_MODULE(asyncparser,Init)

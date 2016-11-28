@@ -1,7 +1,7 @@
 {
     'targets':[
         {
-            'target_name':'async-jsonparser',
+            'target_name':'asyncparser',
             'include_dirs':[
                 "<!(node -e \"require('nan')\")"
             ],
